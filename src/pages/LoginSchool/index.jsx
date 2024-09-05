@@ -1,28 +1,16 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
-
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { style } from './style.js';
 
-
-function Login() {
-  
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    navigate('/student-menu');
-  }
-  
+function LoginSchool() {
   return (
     <>
       <Box sx={style().page}>
         <Box sx={style().loginBox}>
-          <Typography sx={style().titulo}>Login</Typography>
+          <Typography sx={style().titulo}>School Login</Typography>
           <TextField sx={style().input} placeholder='usuário' />
           <TextField sx={style().input} type="password" placeholder='senha' />
-          <Button 
-            sx={style().button}
-            onClick={handleLogin}>
+          <Button sx={style().button}>
             Entrar
           </Button>
         </Box>
@@ -31,4 +19,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginSchool;

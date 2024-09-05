@@ -7,7 +7,7 @@
 const Style = () => {
     return (
         {
-            page: {
+            examBody: {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
