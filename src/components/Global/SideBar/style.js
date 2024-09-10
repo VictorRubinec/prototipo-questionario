@@ -78,12 +78,6 @@ const Style = () => {
             }
         },
 
-        icon: {
-            color: '#fff',
-            fontSize: '30px',
-            margin: '0 5px',
-        },
-
         avatar: {
             width: '100px',
             height: '100px',

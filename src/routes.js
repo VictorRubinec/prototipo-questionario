@@ -28,18 +28,21 @@ function Rotas() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            {/* <Route index element={<Home />} /> */}
-            <Route index element={<Login />} /> {/* Feito */}
-            <Route path="login-admin" element={<LoginAdmin />} /> {/* Feito */}
-            <Route path="login-school" element={<LoginSchool />} /> {/* Feito */}
-            <Route path="register" element={<Register />} />
-            <Route path="question" element={<Question />} />
-            <Route path="dashboard" element={<DashboardSchool />} />{/* Feito */}
-            <Route path="dashboard-admin" element={<DashboardAdmin />} />{/* Feito */}
-            <Route path="student-menu" element={<StudentMenu />} /> {/* Feito */}
-            <Route path="exam" element={<Exam />} /> {/* Feito */}
-            <Route path="grades" element={<Grades />} />
-            <Route path="profile" element={<Profile />} />
+            <Route index element={<Login />} /> 
+            <Route path="admin" element={<LoginAdmin />} /> 
+            <Route path="school" element={<LoginSchool />} /> 
+
+            <Route path="student" element={<StudentMenu />} /> 
+            <Route path="student/exam" element={<Exam />} /> 
+            <Route path="student/grades" element={<Grades />} />
+            <Route path="student/question" element={<Question />} />
+            
+            <Route path="school/dashboard" element={<DashboardSchool />} />
+            <Route path="admin/dashboard" element={<DashboardAdmin />} />
+
+            <Route path=":user/register" element={<Register />} />
+
+            <Route path=":user/profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

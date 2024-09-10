@@ -3,77 +3,84 @@ import { Box, Typography, Avatar, Button, ButtonGroup } from '@mui/material';
 import { style } from './style.js';
 import { useNavigate } from 'react-router-dom';
 
-// ícones
-import MenuIcon from '@mui/icons-material/Menu';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import LogoutIcon from '@mui/icons-material/Logout';
+import Icon from '../Icon/index.jsx';
 
-// aluno
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import ClassIcon from '@mui/icons-material/Class';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-
-// school e admin
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import GroupIcon from '@mui/icons-material/Group';
-
-// school
-import QueueIcon from '@mui/icons-material/Queue';
-
-// admin
-import SchoolIcon from '@mui/icons-material/School';
+import supabase from '../../../config/client.js';
 
 function SideBar(props) {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   
   const { side, setSide } = props.sideState;
-  const { userPermitions } = props;
+  
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  const userPermitions = sessionStorage.getItem('permitions');
 
-  const handleOpen = () => {
+  const iconProps = {
+    color: '#fff',
+    fontSize: '28px',
+    margin: '0 5px',
+  };
+
+  const handleSideBar = () => {
     setOpen(!open);
     setSide(!side);
   };
 
-  const handleExams = () => {
-    navigate('/student-menu');
-  };
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('permitions');
+
+    navigate('/');
+  }
+
+  const handleMenu = (path) => {
+    navigate(path);
+  }
 
   return (
     <>
       <Box sx={open ? style().sideBarOpen : style().sideBarClosed}>
         <Box sx={style().sideBarHeader}>
           <Box sx={style().sideBarIcon}>
-            <Button onClick={handleOpen} sx={style().sideBarButton}>
-              {open ? <ArrowBackIosIcon sx={style().icon} /> : <MenuIcon sx={style().icon} />}
+            <Button onClick={handleSideBar} sx={style().sideBarButton}>
+              {open ? <Icon name="ArrowBackIosIcon" props={iconProps} /> : <Icon name="MenuIcon" props={iconProps} />}
             </Button>
           </Box>
           <Box sx={open ? style().userInformation : style().userInformationClosed}>
             <Avatar sx={style().avatar} />
-            <Typography sx={style().nome}>Nome do Usuário</Typography>
+            <Typography sx={style().nome}>{user.nome}</Typography>
           </Box>
           {open ? (
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
               {userPermitions === 'aluno' && (
                 <>
-                  <Button sx={style().button} onClick={handleExams}><LibraryBooksIcon sx={style().icon} /> Meus Exames</Button>
-                  <Button sx={style().button}><ClassIcon sx={style().icon} /> Notas</Button>
-                  <Button sx={style().button}><ManageAccountsIcon sx={style().icon} /> Perfil</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student')}><Icon name="LibraryBooksIcon" props={iconProps} /> Provas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student/grades')}><Icon name="ManageAccountsIcon" props={iconProps} /> Minhas Notas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
                 </>
               )}
               {userPermitions === 'admin' && (
                 <>
-                  <Button sx={style().button}><DashboardIcon sx={style().icon} /> Dashboard</Button>
-                  <Button sx={style().button}><GroupIcon sx={style().icon} /> Gerenciar Usuários</Button>
-                  <Button sx={style().button}><SchoolIcon sx={style().icon} /> Gestão de Escolas</Button>
-                  <Button sx={style().button}><ManageAccountsIcon sx={style().icon} /> Perfil</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/dashboard')}><Icon name="DashboardIcon" props={iconProps} /> Dashboard</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/users')}><Icon name="GroupIcon" props={iconProps} /> Gestão de Usuários</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/schools')}><Icon name="SchoolIcon" props={iconProps} /> Gestão de Escolas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
                 </>
               )}
               {userPermitions === 'school' && (
                 <>
-                  <Button sx={style().button}><DashboardIcon sx={style().icon} /> Dashboard</Button>
-                  <Button sx={style().button}><QueueIcon sx={style().icon} /> Gestão de Alunos</Button>
-                  <Button sx={style().button}><ManageAccountsIcon sx={style().icon} /> Perfil</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/school/dashboard')}><Icon name="DashboardIcon" props={iconProps} /> Dashboard</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/school/students')}><Icon name="QueueIcon" props={iconProps} /> Gestão de Alunos</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/school/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
+
                 </>
               )}
             </ButtonGroup>
@@ -81,32 +88,32 @@ function SideBar(props) {
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
               {userPermitions === 'aluno' && (
                 <>
-                  <Button sx={style().button} onClick={handleExams}><LibraryBooksIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><ClassIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><ManageAccountsIcon sx={style().icon} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student')}><Icon name="LibraryBooksIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student/grades')}><Icon name="ClassIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}
               {userPermitions === 'admin' && (
                 <>
-                  <Button sx={style().button}><DashboardIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><GroupIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><SchoolIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><ManageAccountsIcon sx={style().icon} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/dashboard')}><Icon name="DashboardIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/users')}><Icon name="GroupIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/admin/schools')}><Icon name="SchoolIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}
               {userPermitions === 'school' && (
                 <>
-                  <Button sx={style().button}><QueueIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><DashboardIcon sx={style().icon} /></Button>
-                  <Button sx={style().button}><ManageAccountsIcon sx={style().icon} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/school/dashboard')}><Icon name="DashboardIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/school/students')}><Icon name="QueueIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}
             </ButtonGroup>
           )}
           {open ? (
-            <Button sx={style().buttonSair}><LogoutIcon sx={style().icon} /> Sair</Button>
+            <Button sx={style().buttonSair} onClick={handleLogout}><Icon name="LogoutIcon" props={iconProps} /></Button>
           ) : (
-            <Button sx={style().buttonSair}><LogoutIcon sx={style().icon} /></Button>
+            <Button sx={style().buttonSair} onClick={handleLogout}><Icon name="LogoutIcon" props={iconProps} /></Button>
           )}
         </Box>
       </Box>
