@@ -23,6 +23,24 @@ const Style = () => {
                 fontWeight: 'bold',
             },
 
+            turma : {
+                fontSize: '16px',
+                fontWeight: 'bold',
+            },
+
+            tipo: {
+                fontSize: '14px',
+                fontWeight: 'bold',
+            },
+
+            descricao: {
+                fontSize: '14px',
+            },
+
+            data: {
+                fontSize: '14px',
+            },
+
             boxButton: {
                 display: 'flex',
                 justifyContent: 'right',
