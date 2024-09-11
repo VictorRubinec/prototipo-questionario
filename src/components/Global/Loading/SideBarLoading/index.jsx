@@ -1,49 +1,32 @@
 import React from 'react';
 import { Box, Typography, Avatar, Button, ButtonGroup } from '@mui/material';
 import { style } from './style.js';
-import { useNavigate } from 'react-router-dom';
 
-import Icon from '../Icon/index.jsx';
+import Icon from '../../Icon/index.jsx';
 
-import supabase from '../../../config/client.js';
-
-function SideBar(props) {
+function SideBarLoading(props) {
   const [open, setOpen] = React.useState(false);
   
   const { side, setSide } = props.sideState;
   
   const user = JSON.parse(sessionStorage.getItem('user'));
   const userPermissions = sessionStorage.getItem('permissions');
-  
+
   const iconProps = {
     color: '#fff',
     fontSize: '28px',
     margin: '0 5px',
   };
-  
+
   const handleSideBar = () => {
     setOpen(!open);
     setSide(!side);
   };
-  
-  const navigate = useNavigate();
-  
+
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      console.log(error);
-      return;
-    }
-
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('permissions');
-
-    navigate('/');
   }
 
   const handleMenu = (path) => {
-    navigate(path);
   }
 
   return (
@@ -122,4 +105,4 @@ function SideBar(props) {
   );
 }
 
-export default SideBar;
+export default SideBarLoading;

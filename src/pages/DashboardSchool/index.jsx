@@ -11,7 +11,7 @@ import Scatter from '../../components/Dashboards/Scatter/index.jsx';
 
 function DashboardSchool() {
   return (
-    <Estructure userPermitions={"school"}>
+    <Estructure userPermissions={"school"}>
       <Box sx={style().box}>
         <Typography variant="h4" sx={style().title}>
           Dashboard

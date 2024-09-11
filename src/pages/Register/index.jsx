@@ -32,7 +32,7 @@ function Register() {
 
   return (
     <>
-      <Estructure userPermitions={"school"}>
+      <Estructure userPermissions={"school"}>
         {/* {users.map((user) => (
           <Box sx={style().user} key={user.id}>
             <Box sx={style().userHeader}>

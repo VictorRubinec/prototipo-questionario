@@ -1,31 +1,58 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { style } from './style.js';
 
-import { Box, Button, Typography } from '@mui/material';
-
 import Estructure from '../../components/Global/Estructure/index.jsx';
+import Start from '../../components/Student/Start/index.jsx';
+import Questions from '../../components/Student/Questions/index.jsx';
+import End from '../../components/Student/End/index.jsx';
+import Result from '../../components/Student/Result/index.jsx';
 
 function Exam() {
-  return (
-    <Estructure userPermitions={"student"}>
-      <Box sx={style().examBody}>
-      <Box sx={style().examBox}>
-        <Typography sx={style().titulo}>Prova</Typography>
-        <Box sx={style().texto}>
-          <Typography>
-            Você tem 60 minutos para responder 10 questões de múltipla escolha.
-          </Typography>
-          <Typography>
-            Sair da prova ou fechar a aba finalizará a prova automaticamente.
-          </Typography>
-        </Box>
-        <Button sx={style().button}>
-          Iniciar Prova
-        </Button>
-      </Box>
-      </Box>
-    </Estructure>
-  );
+  const { id, question } = useParams();
+
+  // Função para abrir uma nova janela
+  const openNewWindow = () => {
+    const url = 'http://localhost:3000/student/exam/1/questions';
+
+    const newWindow = window.open(
+      url,
+      '_blank',
+      `resizable,scrollbars=yes,noopener,noreferrer`
+    );
+
+    if (newWindow) {
+      newWindow.opener = null;
+    }
+  };
+
+  switch (question) {
+    case "start":
+      return (
+        <Estructure>
+          <Start examId={{ id }} />
+        </Estructure>
+      );
+
+    case "questions":
+      return (
+        <Questions examId={{ id }} />
+      );
+
+    case "end":
+      return (
+        <Estructure>
+          <End />
+        </Estructure>
+      );
+
+    case "result":
+      return (
+        <Estructure>
+          <Result />
+        </Estructure>
+      );
+  }
 }
 
 export default Exam;

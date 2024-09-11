@@ -28,6 +28,7 @@ create table Professores (
     nome varchar(255) not null,
     email varchar(255) not null,
     senha varchar(255) not null,
+    cargo varchar(255) not null,
     data_cadastro datetime not null
 );
 
@@ -68,6 +69,7 @@ create table Turma_Professor (
 create table Alunos (
     id int primary key auto_increment,
     nome varchar(255) not null,
+    ra varchar(255) not null,
     email varchar(255) not null,
     senha varchar(255) not null,
     idade int not null,
@@ -80,6 +82,7 @@ create table Alunos (
     cep varchar(255) not null,
     telefone varchar(255) not null,
     celular varchar(255) not null,
+    data_nascimento date not null,
     data_cadastro datetime not null
 );
 
