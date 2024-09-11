@@ -3,25 +3,19 @@ import { Box, Typography, Divider } from '@mui/material';
 import { style } from './style.js';
 
 import Estructure from '../../components/Global/Estructure'; // Importando o template
-import BoxProva from '../../components/StudentMenu/BoxProva';
-
-import { useNavigate } from "react-router-dom";
+import BoxProva from '../../components/Student/BoxProva/index.jsx';
 
 import supabase from '../../config/client.js';
 
+import useVerifyUserPermissions from '../../utils/useVerifyUserPermissions/index.jsx';
+
 function StudentMenu() {
+  const hasPermission = useVerifyUserPermissions('student');
 
-  const navigate = useNavigate();
+  const [questionarios, setQuestionarios] = React.useState([]);
 
-  if (!sessionStorage.getItem('user') || sessionStorage.getItem('permitions') !== 'aluno') {
-    React.useEffect(() => {
-      navigate('/');
-    }, []);
-  } else {
-
-    const [questionarios, setQuestionarios] = React.useState([]);
-
-    React.useEffect(() => {
+  React.useEffect(() => {
+    if (hasPermission) {
       const fetchData = async () => {
         const { data, error } = await supabase
           .from('v_questionarios_alunos')
@@ -34,25 +28,27 @@ function StudentMenu() {
         }
 
         setQuestionarios(data);
-
-        console.log(data);
       };
 
       fetchData();
-    }, []);
+    }
+  }, [hasPermission]);
 
-    return (
-      <Estructure>
-        <Typography sx={style().menuTitulo}>Minhas Provas:</Typography>
-        <Divider orientation="horizontal" />
-        <Box>
-          {questionarios.map((questionario) => (
-            <BoxProva key={questionario.id_questionario} examInfo={questionario} />
-          ))}
-        </Box>
-      </Estructure>
-    );
+  if (!hasPermission) {
+    return <></>;
   }
+
+  return (
+    <Estructure>
+      <Typography sx={style().menuTitulo}>Minhas Provas:</Typography>
+      <Divider orientation="horizontal" />
+      <Box>
+        {questionarios.map((questionario) => (
+          <BoxProva key={questionario.id_questionario} examInfo={questionario} />
+        ))}
+      </Box>
+    </Estructure>
+  );
 }
 
 export default StudentMenu;

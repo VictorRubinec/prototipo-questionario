@@ -11,7 +11,7 @@ import Scatter from '../../components/Dashboards/Scatter/index.jsx';
 
 function DashboardAdmin() {
   return (
-    <Estructure userPermitions={"admin"}>
+    <Estructure userPermissions={"admin"}>
       <Box sx={style().box}>
         <Typography variant="h4" sx={style().title}>
           Dashboard

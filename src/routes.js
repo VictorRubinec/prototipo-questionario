@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const Login = lazy(() => import("./pages/Login/index.jsx"));
 const StudentMenu = lazy(() => import("./pages/StudentMenu/index.jsx"));
 const Grades = lazy(() => import("./pages/Grades/index.jsx"));
-const Question = lazy(() => import("./pages/Question/index.jsx"));
 const Exam = lazy(() => import("./pages/Exam/index.jsx"));
 
 // Admin
@@ -33,16 +32,15 @@ function Rotas() {
             <Route path="school" element={<LoginSchool />} /> 
 
             <Route path="student" element={<StudentMenu />} /> 
-            <Route path="student/exam" element={<Exam />} /> 
+            <Route path="student/exam/:id/:question" element={<Exam />} /> 
             <Route path="student/grades" element={<Grades />} />
-            <Route path="student/question" element={<Question />} />
             
             <Route path="school/dashboard" element={<DashboardSchool />} />
             <Route path="admin/dashboard" element={<DashboardAdmin />} />
 
-            <Route path=":user/register" element={<Register />} />
+            <Route path="register" element={<Register />} />
 
-            <Route path=":user/profile" element={<Profile />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

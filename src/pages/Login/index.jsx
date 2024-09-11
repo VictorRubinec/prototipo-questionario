@@ -9,8 +9,8 @@ import supabase from '../../config/client.js';
 function Login() {
   
   if (sessionStorage.getItem('user')) {
-    const permitions = sessionStorage.getItem('permitions');
-    if (permitions === 'aluno') {
+    const permissions = sessionStorage.getItem('permissions');
+    if (permissions === 'student') {
       navigate('/student');
     } 
   }
@@ -37,7 +37,7 @@ function Login() {
     }
 
     sessionStorage.setItem('user', JSON.stringify(data[0]));
-    sessionStorage.setItem('permitions', 'aluno');
+    sessionStorage.setItem('permissions', 'student');
 
     navigate('/student');
   }
