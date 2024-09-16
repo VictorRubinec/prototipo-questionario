@@ -101,6 +101,7 @@ create table Questionarios (
     titulo varchar(255) not null,
     tipo varchar(255) not null,
     descricao text not null,
+
     data_cadastro datetime not null
 );
 
