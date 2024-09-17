@@ -1,20 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { style } from './style.js';
 
-function Questions({ user, permissions }) {
-  return (
-    <>
-      <div style={style().container}>
-        <h1>Questões</h1>
-        {user && (
-          <div>
-            <p><strong>Usuário:</strong> {user.name}</p>
-            <p><strong>Permissões:</strong> {permissions}</p>
-          </div>
-        )}
-      </div>
-    </>
-  );
+import supabase from '../../../config/client.js';
+
+function Questions() {
+  
+  React.useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await supabase
+        .from('v_info_questionario')
+        .select('*')
+        .eq('id_questionario', id);
+      if (error) {
+        console.log(error);
+      }
+    }
+  }, [id]);  
+
 }
 
 export default Questions;
