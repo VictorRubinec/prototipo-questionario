@@ -162,3 +162,30 @@ VALUES
     (2, 4, NOW(), NOW() + INTERVAL '1 day', NOW()),
     (2, 5, NOW(), NOW() + INTERVAL '1 day', NOW());
 
+insert into Perguntas (pergunta, tipo, data_cadastro) values 
+    ('Qual é a capital da França?', 'múltipla escolha', now()),
+    ('Quanto é 2 + 2?', 'múltipla escolha', now()),
+    ('Quem descobriu o Brasil?', 'múltipla escolha', now());
+
+insert into Questionario_Pergunta (id_questionario, id_pergunta, data_cadastro) values 
+    (1, 1, now()), 
+    (1, 2, now()), 
+    (1, 3, now());
+
+insert into Pergunta_Alternativas (id_pergunta, alternativa, correta, data_cadastro) values
+    (1, 'Paris', true, now()),
+    (1, 'Londres', false, now()),
+    (1, 'Berlim', false, now()),
+    (1, 'Madrid', false, now());
+
+insert into Pergunta_Alternativas (id_pergunta, alternativa, correta, data_cadastro) values
+    (2, '3', false, now()),
+    (2, '4', true, now()),
+    (2, '5', false, now()),
+    (2, '6', false, now());
+
+insert into Pergunta_Alternativas (id_pergunta, alternativa, correta, data_cadastro) values
+    (3, 'Cristóvão Colombo', false, now()),
+    (3, 'Pedro Álvares Cabral', true, now()),
+    (3, 'Vasco da Gama', false, now()),
+    (3, 'Fernão de Magalhães', false, now());

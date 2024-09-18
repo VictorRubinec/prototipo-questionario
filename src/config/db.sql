@@ -101,7 +101,6 @@ create table Questionarios (
     titulo varchar(255) not null,
     tipo varchar(255) not null,
     descricao text not null,
-
     data_cadastro datetime not null
 );
 
@@ -117,6 +116,7 @@ create table Questionario_Pergunta (
 create table Perguntas (
     id int primary key auto_increment,
     pergunta text not null,
+    tipo varchar(255) not null,
     data_cadastro datetime not null
 );
 
@@ -152,11 +152,11 @@ create table Resultados (
 );
 
 -- Logs --
-create table Logs (
-    id int primary key auto_increment,
-    id_usuario int not null,
-    acao varchar(255) not null,
-    data_cadastro datetime not null,
-    foreign key (id_usuario) references Administradores(id)
-);
+-- create table Logs (
+--     id int primary key auto_increment,
+--     id_usuario int not null,
+--     acao varchar(255) not null,
+--     data_cadastro datetime not null,
+--     foreign key (id_usuario) references Administradores(id)
+-- );
 

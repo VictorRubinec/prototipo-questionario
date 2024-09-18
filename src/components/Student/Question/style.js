@@ -7,7 +7,13 @@
 const Style = () => {
     return (
         {
-           
+            question: {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: '100vh',
+                overflowY: 'auto',
+            },
         }
     )
 }
