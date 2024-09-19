@@ -5,6 +5,8 @@ import Estructure from '../../components/Global/Estructure/index.jsx';
 
 function Grades() {
 
+  const userPermissionsInfo = sessionStorage.getItem('permissions');
+
   return (
     <>
       <Estructure userPermissionsInfo={userPermissionsInfo}>

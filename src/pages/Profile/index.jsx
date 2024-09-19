@@ -7,14 +7,14 @@ import ProfileAdmin from '../../components/Global/Profile/ProfileAdmin/index.jsx
 import ProfileSchool from '../../components/Global/Profile/ProfileSchool/index.jsx';
 
 function Profile() {
-  const user = sessionStorage.getItem('permissions');
+  const userPermissionsInfo = sessionStorage.getItem('permissions');
 
   return (
     <Estructure userPermissionsInfo={userPermissionsInfo}>
-      {user === 'student' && <ProfileStudent />}
-      {user === 'admin' && <ProfileAdmin />}
-      {user === 'school' && <ProfileSchool />}
-      {user !== 'student' && user !== 'admin' && user !== 'school' && (
+      {userPermissionsInfo === 'student' && <ProfileStudent />}
+      {userPermissionsInfo === 'admin' && <ProfileAdmin />}
+      {userPermissionsInfo === 'school' && <ProfileSchool />}
+      {userPermissionsInfo !== 'student' && userPermissionsInfo !== 'admin' && userPermissionsInfo !== 'school' && (
         <Typography variant="h6" color="error">
           Permissão não reconhecida. Por favor, faça login novamente.
         </Typography>
