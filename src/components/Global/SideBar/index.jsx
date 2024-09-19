@@ -8,19 +8,17 @@ import Icon from '../Icon/index.jsx';
 import supabase from '../../../config/client.js';
 
 function SideBar(props) {
+
   const [open, setOpen] = React.useState(false);
   
   const { side, setSide } = props.sideState;
-  
-  const user = JSON.parse(sessionStorage.getItem('user'));
-  const userPermissions = sessionStorage.getItem('permissions');
   
   const iconProps = {
     color: '#fff',
     fontSize: '28px',
     margin: '0 5px',
   };
-  
+
   const handleSideBar = () => {
     setOpen(!open);
     setSide(!side);
@@ -36,8 +34,7 @@ function SideBar(props) {
       return;
     }
 
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('permissions');
+    sessionStorage.clear();
 
     navigate('/');
   }
@@ -45,6 +42,9 @@ function SideBar(props) {
   const handleMenu = (path) => {
     navigate(path);
   }
+
+  const userPermissions = sessionStorage.getItem('permissions');
+  const userName = JSON.parse(sessionStorage.getItem('user')).nome;
 
   return (
     <>
@@ -57,14 +57,14 @@ function SideBar(props) {
           </Box>
           <Box sx={open ? style().userInformation : style().userInformationClosed}>
             <Avatar sx={style().avatar} />
-            <Typography sx={style().nome}>{user.nome}</Typography>
+            <Typography sx={style().nome}>{userName}</Typography>
           </Box>
           {open ? (
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
               {userPermissions === 'student' && (
                 <>
-                  <Button sx={style().button} onClick={() => handleMenu('/student')}><Icon name="LibraryBooksIcon" props={iconProps} /> Provas</Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/grades')}><Icon name="ManageAccountsIcon" props={iconProps} /> Minhas Notas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/')}><Icon name="LibraryBooksIcon" props={iconProps} /> Provas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/grades')}><Icon name="ManageAccountsIcon" props={iconProps} /> Minhas Notas</Button>
                   <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
                 </>
               )}
@@ -89,8 +89,8 @@ function SideBar(props) {
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
               {userPermissions === 'student' && (
                 <>
-                  <Button sx={style().button} onClick={() => handleMenu('/student')}><Icon name="LibraryBooksIcon" props={iconProps} /></Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/grades')}><Icon name="ClassIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/')}><Icon name="LibraryBooksIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/grades')}><Icon name="ClassIcon" props={iconProps} /></Button>
                   <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}

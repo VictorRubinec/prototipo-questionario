@@ -1,162 +1,159 @@
-create database Questionario;
-
-use database Questionario;
-
 -- Administradores --
 create table Administradores (
-    id int primary key auto_increment,
-    nome varchar(255) not null,
-    email varchar(255) not null,
-    senha varchar(255) not null,
-    data_cadastro datetime not null
+    id SERIAL PRIMARY KEY,
+    nome varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    senha varchar(255) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
 );
 
 -- Professores/Escolas --
 create table Escolas (
-    id int primary key auto_increment,
-    endereco varchar(255) not null,
-    cidade varchar(255) not null,
-    estado varchar(255) not null,
-    cep varchar(255) not null,
-    telefone varchar(255) not null,
-    email varchar(255) not null,
-    data_cadastro datetime not null,
+    id SERIAL PRIMARY KEY,
+    nome varchar(255) NOT NULL,
+    endereco varchar(255) NOT NULL,
+    cidade varchar(255) NOT NULL,
+    estado varchar(255) NOT NULL,
+    cep varchar(255) NOT NULL,
+    telefone varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
 );
 
 create table Professores (
-    id int primary key auto_increment,
-    nome varchar(255) not null,
-    email varchar(255) not null,
-    senha varchar(255) not null,
-    cargo varchar(255) not null,
-    data_cadastro datetime not null
+    id SERIAL PRIMARY KEY,
+    nome varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    senha varchar(255) NOT NULL,
+    cargo varchar(255) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
 );
 
 create table Turmas (
-    id int primary key auto_increment,
-    nome varchar(255) not null,
-    data_cadastro datetime not null,
-);
-
-create table Escola_Turma (
-    id int primary key auto_increment,
-    id_escola int not null,
-    id_turma int not null,
-    data_cadastro datetime not null,
-    foreign key (id_escola) references Escolas(id),
-    foreign key (id_turma) references Turmas(id)
+    id SERIAL PRIMARY KEY,
+    nome varchar(255) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
 );
 
 create table Escola_Professor (
-    id int primary key auto_increment,
-    id_escola int not null,
-    id_professor int not null,
-    data_cadastro datetime not null,
+    id SERIAL PRIMARY KEY,
+    id_escola INT NOT NULL,
+    id_professor INT NOT NULL,
+    id_turma INT NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL,
     foreign key (id_escola) references Escolas(id),
-    foreign key (id_professor) references Professores(id)
-);
-
-create table Turma_Professor (
-    id int primary key auto_increment,
-    id_turma int not null,
-    id_professor int not null,
-    data_cadastro datetime not null,
-    foreign key (id_turma) references Turmas(id),
-    foreign key (id_professor) references Professores(id)
+    foreign key (id_professor) references Professores(id),
+    foreign key (id_turma) references Turmas(id)
 );
 
 -- Alunos --
 create table Alunos (
-    id int primary key auto_increment,
-    nome varchar(255) not null,
-    ra varchar(255) not null,
-    email varchar(255) not null,
-    senha varchar(255) not null,
-    idade int not null,
-    sexo varchar(1) not null,
-    turma varchar(255) not null,
-    etnia varchar(255) not null,
-    endereco varchar(255) not null,
-    cidade varchar(255) not null,
-    estado varchar(255) not null,
-    cep varchar(255) not null,
-    telefone varchar(255) not null,
-    celular varchar(255) not null,
-    data_nascimento date not null,
-    data_cadastro datetime not null
+    id SERIAL PRIMARY KEY,
+    ra varchar(255) NOT NULL,
+    nome varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    senha varchar(255) NOT NULL,
+    idade INT NOT NULL,
+    sexo varchar(1) NOT NULL,
+    etnia varchar(255) NOT NULL,
+    endereco varchar(255) NOT NULL,
+    cidade varchar(255) NOT NULL,
+    estado varchar(255) NOT NULL,
+    cep varchar(255) NOT NULL,
+    telefone varchar(255) NOT NULL,
+    celular varchar(255) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
 );
 
 create table Aluno_Turma (
-    id int primary key auto_increment,
-    id_aluno int not null,
-    id_turma int not null,
-    data_cadastro datetime not null,
+    id SERIAL PRIMARY KEY,
+    id_aluno INT NOT NULL,
+    id_escola INT NOT NULL,
+    id_turma INT NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL,
     foreign key (id_aluno) references Alunos(id),
-    foreign key (id_turma) references Turmas(id)
+    foreign key (id_turma) references Turmas(id),
+    foreign key (id_escola) references Escolas(id)
 );
 
 -- Questionários --
 create table Questionarios (
-    id int primary key auto_increment,
-    titulo varchar(255) not null,
-    tipo varchar(255) not null,
-    descricao text not null,
-    data_cadastro datetime not null
+    id SERIAL PRIMARY KEY,
+    titulo varchar(255) NOT NULL,
+    tipo varchar(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
+);
+
+create table Perguntas (
+    id SERIAL PRIMARY KEY,
+    titulo varchar(255) NOT NULL,
+    pergunta TEXT NOT NULL,
+    tipo varchar(255) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL
 );
 
 create table Questionario_Pergunta (
-    id int primary key auto_increment,
-    id_questionario int not null,
-    id_pergunta int not null,
-    data_cadastro datetime not null,
+    id SERIAL PRIMARY KEY,
+    id_questionario INT NOT NULL,
+    id_pergunta INT NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL,
     foreign key (id_questionario) references Questionarios(id),
     foreign key (id_pergunta) references Perguntas(id)
 );
 
-create table Perguntas (
-    id int primary key auto_increment,
-    pergunta text not null,
-    tipo varchar(255) not null,
-    data_cadastro datetime not null
-);
-
 create table Pergunta_Alternativas (
-    id int primary key auto_increment,
-    id_pergunta int not null,
-    alternativa text not null,
-    correta boolean not null,
-    data_cadastro datetime not null,
+    id SERIAL PRIMARY KEY,
+    id_pergunta INT NOT NULL,
+    alternativa TEXT NOT NULL,
+    correta BOOLEAN NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL,
     foreign key (id_pergunta) references Perguntas(id)
 );
 
 create table Turma_Questionario (
-    id int primary key auto_increment,
-    id_turma int not null,
-    id_questionario int not null,
-    data_inicio datetime not null,
-    data_fim datetime not null,
-    data_cadastro datetime not null,
+    id SERIAL PRIMARY KEY,
+    id_turma INT NOT NULL,
+    id_questionario INT NOT NULL,
+    data_inicio TIMESTAMP NOT NULL,
+    data_fim TIMESTAMP NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL,
     foreign key (id_turma) references Turmas(id),
     foreign key (id_questionario) references Questionarios(id)
 );
 
 -- Resultados --
-create table Resultados (
-    id int primary key auto_increment,
-    id_aluno int not null,
-    id_questionario int not null,
-    nota double(10,2) not null,
-    data_cadastro datetime not null,
-    foreign key (id_aluno) references Alunos(id),
-    foreign key (id_questionario) references Questionarios(id)
+CREATE TABLE Respostas_Aluno (
+    id SERIAL PRIMARY KEY,
+    id_aluno INT NOT NULL,
+    id_pergunta INT NOT NULL,
+    resposta TEXT NOT NULL,
+    acerto DECIMAL(10,2) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES Alunos(id),
+    FOREIGN KEY (id_pergunta) REFERENCES Perguntas(id)
 );
+
+CREATE TABLE Resultados_Aluno (
+    id SERIAL PRIMARY KEY,
+    id_aluno INT NOT NULL,
+    id_turma INT NOT NULL,
+    id_questionario INT NOT NULL,
+    nota DECIMAL(10,2) NOT NULL, 
+    data_cadastro TIMESTAMP NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES Alunos(id),
+    FOREIGN KEY (id_turma) REFERENCES Turmas(id),
+    FOREIGN KEY (id_questionario) REFERENCES Questionarios(id)
+);
+
 
 -- Logs --
 -- create table Logs (
---     id int primary key auto_increment,
---     id_usuario int not null,
---     acao varchar(255) not null,
---     data_cadastro datetime not null,
+--     id SERIAL PRIMARY KEY,
+--     id_usuario INT NOT NULL,
+--     acao varchar(255) NOT NULL,
+--     data_cadastro TIMESTAMP NOT NULL,
 --     foreign key (id_usuario) references Administradores(id)
 -- );
 

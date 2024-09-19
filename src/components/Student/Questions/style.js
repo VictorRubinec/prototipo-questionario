@@ -1,4 +1,3 @@
-import { borderRadius } from "@mui/system";
 
 const Style = () => {
     return {
@@ -16,6 +15,11 @@ const Style = () => {
             height: '100vh',
             overflowY: 'auto',
         },
+        examTitle: {
+            fontSize: '20px',
+            fontWeight: 'bold',
+            marginBottom: '10px',
+        },
         examInfo: {
             position: 'fixed',
             right: 0,
@@ -29,6 +33,11 @@ const Style = () => {
             padding: '10px',
             backgroundColor: '#f0f0f0',
             boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.1)',
+        },
+        examInfoContent: {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
         },
         listQuestions: {
             display: 'grid',
@@ -70,6 +79,60 @@ const Style = () => {
                 backgroundColor: '#e0e0e0',
             },
         },
+        buttonFooter: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'right',
+            alignItems: 'center',
+            width: '100%',
+            padding: '10px',
+            marginTop: 'auto',
+        },
+        finalizeButton: {
+            width: '100px',
+            marginTop: '10px',
+            borderRadius: '5px',
+            backgroundColor: 'blue', // Cor verde para o botão de finalizar
+            color: 'white',
+            '&:hover': {
+                backgroundColor: 'darkblue', // Cor mais escura ao passar o mouse
+            },
+        },
+        modalContainer: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        modal: {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '400px',
+            height: '150px',
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            padding: '20px',
+        },
+        modalButtons: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            marginTop: 'auto',
+        },
+        modalButton: {
+            width: '100px',
+            margin: '0 10px',
+            borderRadius: '5px',
+            backgroundColor: 'blue', // Cor verde para o botão de finalizar
+            color: 'white',
+            '&:hover': {
+                backgroundColor: 'darkblue', // Cor mais escura ao passar o mouse
+            },
+        },
+
     };
 };
 

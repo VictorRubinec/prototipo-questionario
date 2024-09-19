@@ -5,7 +5,6 @@ import { style } from './style.js';
 import Estructure from '../../components/Global/Estructure/index.jsx';
 import Start from '../../components/Student/Start/index.jsx';
 import Questions from '../../components/Student/Questions/index.jsx';
-import End from '../../components/Student/End/index.jsx';
 import Result from '../../components/Student/Result/index.jsx';
 
 function Exam() {
@@ -13,7 +12,7 @@ function Exam() {
 
   // Função para abrir uma nova janela
   const openNewWindow = () => {
-    const url = 'http://localhost:3000/student/exam/1/questions';
+    const url = 'http://localhost:3000/exam/1/questions';
 
     const newWindow = window.open(
       url,
@@ -30,20 +29,13 @@ function Exam() {
     case "start":
       return (
         <Estructure>
-          <Start examId={{ id }} />
+          <Start />
         </Estructure>
       );
 
     case "questions":
       return (
-        <Questions examId={{ id }} />
-      );
-
-    case "end":
-      return (
-        <Estructure>
-          <End />
-        </Estructure>
+        <Questions />
       );
 
     case "result":

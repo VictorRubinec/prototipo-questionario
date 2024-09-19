@@ -1,6 +1,3 @@
-import { hexToRgb } from "@mui/material";
-import { fontSize, width } from "@mui/system";
-
 const Style = () => {
     return {
         headerBox: {
@@ -48,6 +45,19 @@ const Style = () => {
             },
             '@media (min-width: 900px)': { // md
                 fontSize: '20px',
+            },
+        },
+
+        infoDesc:
+        {
+            fontSize: '14px',
+            margin: '5px 0',
+            textAlign: 'justify',
+            '@media (min-width: 600px)': { // sm
+                fontSize: '16px',
+            },
+            '@media (min-width: 900px)': { // md
+                fontSize: '18px',
             },
         },
 

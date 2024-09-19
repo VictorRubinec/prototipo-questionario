@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function useVerifyUserPermissions(permissions) {
+function useVerifyUserPermissions(requiredPermissions) {
   const navigate = useNavigate();
   const [hasPermission, setHasPermission] = useState(false);
 
@@ -9,10 +9,15 @@ function useVerifyUserPermissions(permissions) {
     const user = sessionStorage.getItem("user");
     const userPermissions = sessionStorage.getItem("permissions");
 
-    if (!user || userPermissions !== permissions) {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    if (!requiredPermissions) {
       switch (userPermissions) {
         case "student":
-          navigate("/");
+          navigate("/login");
           break;
         case "admin":
           navigate("/admin");
@@ -21,13 +26,18 @@ function useVerifyUserPermissions(permissions) {
           navigate("/school");
           break;
         default:
-          navigate("/");
+          navigate("/login");
           break;
       }
     } else {
-      setHasPermission(true);
+      const hasRequiredPermissions = requiredPermissions.includes(userPermissions);
+      setHasPermission(hasRequiredPermissions);
+
+      if (!hasRequiredPermissions) {
+        navigate("/login");
+      }
     }
-  }, [permissions, navigate]);
+  }, [requiredPermissions, navigate]);
 
   return hasPermission;
 }

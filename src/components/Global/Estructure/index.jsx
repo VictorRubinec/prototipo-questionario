@@ -4,19 +4,28 @@ import { style } from './style.js';
 
 import SideBar from '../SideBar/index.jsx';
 
-function Estructure({ children }) {
+import useVerifyUserPermissions from '../../../utils/useVerifyUserPermissions/index.jsx';
+
+function Estructure({ children, userPermissionsInfo }) {
+
+  // const verifyUserPermissions = useVerifyUserPermissions(userPermissionsInfo);
+
   const [side, setSide] = React.useState(false);
 
-  return (
-    <>
-      <Box sx={style().page}>
-        <SideBar sideState={{ side, setSide }}/>
-        <Box sx={side ? style().bodyOpen : style().bodyClosed}>
-          {children}
+  // if (!verifyUserPermissions) {
+  //   return <></>;
+  // } else {
+    return (
+      <>
+        <Box sx={style().page}>
+          <SideBar sideState={{ side, setSide }} />
+          <Box sx={side ? style().bodyOpen : style().bodyClosed}>
+            {children}
+          </Box>
         </Box>
-      </Box>
-    </>
-  );
+      </>
+    );
+  // }
 }
 
 export default Estructure;

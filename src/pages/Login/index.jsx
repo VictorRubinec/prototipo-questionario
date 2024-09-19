@@ -7,15 +7,10 @@ import { style } from './style.js';
 import supabase from '../../config/client.js';
 
 function Login() {
-  
-  if (sessionStorage.getItem('user')) {
-    const permissions = sessionStorage.getItem('permissions');
-    if (permissions === 'student') {
-      navigate('/student');
-    } 
-  }
 
   const navigate = useNavigate();
+
+  const [user, setUser] = React.useState({});
 
   const handleLogin = async () => {
 
@@ -23,11 +18,11 @@ function Login() {
     const password = document.getElementById('password').value;
 
     const { data, error } = await supabase
-      .from('alunos')
-      .select('id, nome, email')
-      .eq('email', username)
-      .eq('senha', password);
-    
+      .from('v_login_aluno')
+      .select('*')
+      .eq('ra_aluno', username)
+      .eq('senha_aluno', password);
+
     if (error) {
       console.log(error);
       return;
@@ -36,20 +31,35 @@ function Login() {
       return;
     }
 
-    sessionStorage.setItem('user', JSON.stringify(data[0]));
+    sessionStorage.setItem('user', JSON.stringify(
+      {
+        id: data[0].id_aluno,
+        nome: data[0].nome_aluno,
+      }
+    ));
     sessionStorage.setItem('permissions', 'student');
 
-    navigate('/student');
+    console.log(sessionStorage.getItem('user'));
+
+    navigate('/');
   }
-  
+
+  const handleEnter = (event) => {
+    if (event.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
+      handleLogin();
+    }
+  }
+
+  document.addEventListener('keydown', handleEnter);
+
   return (
     <>
       <Box sx={style().page}>
         <Box sx={style().loginBox}>
           <Typography sx={style().titulo}>Login</Typography>
-          <TextField sx={style().input} placeholder='usuário' id="username" />
-          <TextField sx={style().input} type="password" placeholder='senha' id="password" />
-          <Button 
+          <TextField sx={style().input} label='RA' id="username" />
+          <TextField sx={style().input} type="password" label='senha' id="password" />
+          <Button
             sx={style().button}
             onClick={handleLogin}>
             Entrar

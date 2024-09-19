@@ -46,9 +46,9 @@ function SideBarLoading(props) {
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
               {userPermissions === 'student' && (
                 <>
-                  <Button sx={style().button} onClick={() => handleMenu('/student')}><Icon name="LibraryBooksIcon" props={iconProps} /> Provas</Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/grades')}><Icon name="ManageAccountsIcon" props={iconProps} /> Minhas Notas</Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/')}><Icon name="LibraryBooksIcon" props={iconProps} /> Provas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/grades')}><Icon name="ManageAccountsIcon" props={iconProps} /> Minhas Notas</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
                 </>
               )}
               {userPermissions === 'admin' && (
@@ -72,9 +72,9 @@ function SideBarLoading(props) {
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
               {userPermissions === 'student' && (
                 <>
-                  <Button sx={style().button} onClick={() => handleMenu('/student')}><Icon name="LibraryBooksIcon" props={iconProps} /></Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/grades')}><Icon name="ClassIcon" props={iconProps} /></Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/')}><Icon name="LibraryBooksIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/grades')}><Icon name="ClassIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}
               {userPermissions === 'admin' && (
@@ -82,14 +82,14 @@ function SideBarLoading(props) {
                   <Button sx={style().button} onClick={() => handleMenu('/admin/dashboard')}><Icon name="DashboardIcon" props={iconProps} /></Button>
                   <Button sx={style().button} onClick={() => handleMenu('/admin/users')}><Icon name="GroupIcon" props={iconProps} /></Button>
                   <Button sx={style().button} onClick={() => handleMenu('/admin/schools')}><Icon name="SchoolIcon" props={iconProps} /></Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}
               {userPermissions === 'school' && (
                 <>
                   <Button sx={style().button} onClick={() => handleMenu('/school/dashboard')}><Icon name="DashboardIcon" props={iconProps} /></Button>
                   <Button sx={style().button} onClick={() => handleMenu('/school/students')}><Icon name="QueueIcon" props={iconProps} /></Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/student/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /></Button>
                 </>
               )}
             </ButtonGroup>

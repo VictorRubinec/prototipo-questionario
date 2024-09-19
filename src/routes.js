@@ -27,13 +27,13 @@ function Rotas() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Login />} /> 
+            <Route path="login" element={<Login />} /> 
             <Route path="admin" element={<LoginAdmin />} /> 
             <Route path="school" element={<LoginSchool />} /> 
 
-            <Route path="student" element={<StudentMenu />} /> 
-            <Route path="student/exam/:id/:question" element={<Exam />} /> 
-            <Route path="student/grades" element={<Grades />} />
+            <Route index element={<StudentMenu />} /> 
+            <Route path="exam/:id/:question" element={<Exam />} /> 
+            <Route path="grades" element={<Grades />} />
             
             <Route path="school/dashboard" element={<DashboardSchool />} />
             <Route path="admin/dashboard" element={<DashboardAdmin />} />

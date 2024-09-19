@@ -95,7 +95,7 @@ function Start() {
   const [open, setOpen] = React.useState(false);
 
   const handleStart = () => {
-    navigate(`/student/exam/${id}/questions`);
+    navigate(`/exam/${id}/questions`);
   }
 
   return (
@@ -110,7 +110,7 @@ function Start() {
       <Box sx={style().infoBody}>
         <Box sx={style().infoBox}>
           <Typography sx={style().info}><b>Turma: </b>{exam.nome_turma}</Typography>
-          <Typography sx={style().info}><b></b>{exam.descricao_questionario}</Typography>
+          <Typography sx={style().infoDesc}><b></b>{exam.descricao_questionario}</Typography>
         </Box>
 
         <Box sx={style().dataBox}>

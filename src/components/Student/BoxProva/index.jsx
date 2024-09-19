@@ -8,7 +8,7 @@ function BoxProva({ examInfo }) {
   const navigate = useNavigate();
 
   const handleExam = (id) => {
-    navigate('/student/exam/' + id + '/start');
+    navigate('/exam/' + id + '/start');
   }
 
   examInfo.data_inicio_questionario = new Date(examInfo.data_inicio_questionario).toLocaleString();
