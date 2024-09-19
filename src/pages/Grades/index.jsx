@@ -7,7 +7,7 @@ function Grades() {
 
   return (
     <>
-      <Estructure>
+      <Estructure userPermissionsInfo={userPermissionsInfo}>
         <Box sx={style().box}>
           <Typography variant="h4" sx={style().title}>
             Notas

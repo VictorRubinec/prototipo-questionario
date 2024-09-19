@@ -8,13 +8,13 @@ import useVerifyUserPermissions from '../../../utils/useVerifyUserPermissions/in
 
 function Estructure({ children, userPermissionsInfo }) {
 
-  // const verifyUserPermissions = useVerifyUserPermissions(userPermissionsInfo);
+  const verifyUserPermissions = useVerifyUserPermissions(userPermissionsInfo);
 
   const [side, setSide] = React.useState(false);
 
-  // if (!verifyUserPermissions) {
-  //   return <></>;
-  // } else {
+  if (!verifyUserPermissions) {
+    return <></>;
+  } else {
     return (
       <>
         <Box sx={style().page}>
@@ -25,7 +25,7 @@ function Estructure({ children, userPermissionsInfo }) {
         </Box>
       </>
     );
-  // }
+  }
 }
 
 export default Estructure;

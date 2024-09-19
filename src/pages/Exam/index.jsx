@@ -25,10 +25,12 @@ function Exam() {
     }
   };
 
+  const userPermissionsInfo = sessionStorage.getItem('permissions');
+
   switch (question) {
     case "start":
       return (
-        <Estructure>
+        <Estructure userPermissionsInfo={userPermissionsInfo}>
           <Start />
         </Estructure>
       );
@@ -40,7 +42,7 @@ function Exam() {
 
     case "result":
       return (
-        <Estructure>
+        <Estructure userPermissionsInfo={userPermissionsInfo}>
           <Result />
         </Estructure>
       );

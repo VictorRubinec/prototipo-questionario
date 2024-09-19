@@ -7,30 +7,20 @@ import ProfileAdmin from '../../components/Global/Profile/ProfileAdmin/index.jsx
 import ProfileSchool from '../../components/Global/Profile/ProfileSchool/index.jsx';
 
 function Profile() {
-
   const user = sessionStorage.getItem('permissions');
 
-  switch (user) {
-    case 'student':
-      return (
-        <Estructure>
-          <ProfileStudent />
-        </Estructure>
-      );
-    case 'admin':
-      return (
-        <Estructure>
-          <ProfileAdmin />
-        </Estructure>
-      );
-    case 'school':
-      return (
-        <Estructure>
-          <ProfileSchool />
-        </Estructure>
-      );
-  }
-
+  return (
+    <Estructure userPermissionsInfo={userPermissionsInfo}>
+      {user === 'student' && <ProfileStudent />}
+      {user === 'admin' && <ProfileAdmin />}
+      {user === 'school' && <ProfileSchool />}
+      {user !== 'student' && user !== 'admin' && user !== 'school' && (
+        <Typography variant="h6" color="error">
+          Permissão não reconhecida. Por favor, faça login novamente.
+        </Typography>
+      )}
+    </Estructure>
+  );
 }
 
 export default Profile;
