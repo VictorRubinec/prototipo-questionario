@@ -122,3 +122,14 @@ FROM
     Respostas_Aluno ra
     JOIN Perguntas p ON ra.id_pergunta = p.id;
 
+CREATE VIEW V_Notas_Aluno AS
+SELECT
+    ra.id_aluno,
+    q.id AS id_questionario,
+    q.titulo AS questionario_titulo,
+    ra.nota AS nota_obtida,
+    ra.data_cadastro AS data_realizacao
+FROM
+    Resultados_Aluno ra
+    JOIN Questionarios q ON ra.id_questionario = q.id
+    JOIN Turma_Questionario tq ON ra.id_questionario = tq.id_questionario AND ra.id_turma = tq.id_turma;

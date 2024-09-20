@@ -55,11 +55,11 @@ function Result() {
         <Typography sx={style().examTitle}>{examResults.questionario_titulo}</Typography>
       </Box>
       <TableContainer component={Paper} sx={style().tableContainer}>
-        <Table>
+        <Table sx={style().table}>
           <TableHead>
-            <TableRow>
-              <TableCell>Pergunta</TableCell>
-              <TableCell>Acerto</TableCell>
+            <TableRow sx={style().tableHeadRow}>
+              <TableCell sx={style().tableHeadCell}>Pergunta</TableCell>
+              <TableCell sx={style().tableHeadCell}>Acerto (%)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

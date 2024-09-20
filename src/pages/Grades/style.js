@@ -1,5 +1,3 @@
-import { padding } from "@mui/system";
-
 const Style = () => {
     return (
         {
@@ -10,7 +8,7 @@ const Style = () => {
                 height: '100vh',
                 width: '100%',
                 backgroundColor: '#f5f5f5',
-                padding: '20px',
+                padding: '10px',
             },
 
             title: {
@@ -49,15 +47,25 @@ const Style = () => {
                 textAlign: 'left',
             },
 
+            tableHeadFinalCell: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#333',
+                backgroundColor: '#e0e0e0',
+                border: '1px solid #ddd',
+                borderRight: 'none',
+                padding: '12px',
+                textAlign: 'left',
+            },
+
             tableHeadActionCell: {
                 fontSize: '16px',
                 fontWeight: 'bold',
                 color: '#333',
                 backgroundColor: '#e0e0e0',
                 border: '1px solid #ddd',
-                padding: '12px',
-                textAlign: 'center',
-                width: '210px',
+                borderLeft: 'none',
+                width: '100px',
             },
 
             tableBodyCell: {
@@ -66,6 +74,24 @@ const Style = () => {
                 border: '1px solid #ddd',
                 padding: '12px',
                 textAlign: 'left',
+            },
+
+            tableBodyFinalCell: {
+                fontSize: '16px',
+                color: '#333',
+                border: '1px solid #ddd',
+                borderRight: 'none',
+                padding: '12px',
+                textAlign: 'left',
+            },
+
+            tableBodyButton: {
+                fontSize: '16px',
+                color: '#333',
+                border: '1px solid #ddd',
+                borderLeft: 'none',
+                padding: '12px',
+                textAlign: 'right',
             },
 
             tableRow: {

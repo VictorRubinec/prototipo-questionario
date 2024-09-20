@@ -11,6 +11,10 @@ const Style = () => {
                 padding: '10px',
                 backgroundColor: '#f4f4f4',
             },
+            table: {
+                minWidth: 650,
+                borderCollapse: 'collapse',
+            },
             examHeader: {
                 marginBottom: '20px',
             },
@@ -18,6 +22,15 @@ const Style = () => {
                 fontSize: '24px',
                 fontWeight: 'bold',
                 color: '#333',
+            },
+            tableHeadCell: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#333',
+                backgroundColor: '#e0e0e0',
+                border: '1px solid #ddd',
+                padding: '12px',
+                textAlign: 'left',
             },
             tableContainer: {
                 marginTop: '20px',
@@ -34,6 +47,7 @@ const Style = () => {
                 marginBottom: '10px',
             },
             questionRow: (acerto_percentual) => ({
+                border: '1px solid #ddd',
                 backgroundColor:
                     acerto_percentual === 1.00 ? 'rgba(144, 238, 144, 0.5)' : // Verde leve
                         acerto_percentual === 0.00 ? 'rgba(255, 99, 71, 0.5)' : // Coral leve

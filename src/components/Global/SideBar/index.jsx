@@ -10,9 +10,11 @@ import supabase from '../../../config/client.js';
 function SideBar(props) {
 
   const [open, setOpen] = React.useState(false);
-  
+
   const { side, setSide } = props.sideState;
-  
+
+  const loadingState = props.loadingState;
+
   const iconProps = {
     color: '#fff',
     fontSize: '28px',
@@ -23,9 +25,10 @@ function SideBar(props) {
     setOpen(!open);
     setSide(!side);
   };
-  
-  const navigate = useNavigate();
-  
+
+  // if (loadingState) {
+  //   const navigate = useNavigate();
+  // }
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
 

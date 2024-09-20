@@ -3,7 +3,32 @@ import { style } from './style.js';
 import { Box, Button, Typography, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import Estructure from '../../components/Global/Estructure/index.jsx';
 
+import supabase from '../../config/client.js';
+
 function Grades() {
+
+  const [grades, setGrades] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const { data, error } = await supabase
+        .from('v_notas_aluno')
+        .select('*')
+        .eq('id_aluno', JSON.parse(sessionStorage.getItem('user')).id);
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      setGrades(data);
+    };
+
+    fetchData();
+
+  }, []);
+
+  console.log(grades);
 
   const userPermissionsInfo = sessionStorage.getItem('permissions');
 
@@ -21,38 +46,23 @@ function Grades() {
                 <TableRow>
                   <TableCell sx={style().tableHeadCell}>Matéria</TableCell>
                   <TableCell sx={style().tableHeadCell}>Nota</TableCell>
-                  <TableCell sx={style().tableHeadCell}>Data</TableCell>
+                  <TableCell sx={style().tableHeadFinalCell}>Data</TableCell>
                   <TableCell sx={style().tableHeadActionCell}></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow sx={style().tableRow}>
-                  <TableCell sx={style().tableBodyCell}>Matemática</TableCell>
-                  <TableCell sx={style().tableBodyCell}>8.5</TableCell>
-                  <TableCell sx={style().tableBodyCell}>25/02/2024</TableCell>
-                  <TableCell sx={style().actionCell}>
-                    <Button variant="contained" color="primary" sx={style().button}>Revisar</Button>
-                    <Button variant="contained" color="primary" sx={style().button}>Detalhes</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={style().tableRow}>
-                  <TableCell sx={style().tableBodyCell}>Português</TableCell>
-                  <TableCell sx={style().tableBodyCell}>7.0</TableCell>
-                  <TableCell sx={style().tableBodyCell}>26/02/2024</TableCell>
-                  <TableCell sx={style().actionCell}>
-                    <Button variant="contained" color="primary" sx={style().button}>Revisar</Button>
-                    <Button variant="contained" color="primary" sx={style().button}>Detalhes</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={style().tableRow}>
-                  <TableCell sx={style().tableBodyCell}>Química</TableCell>
-                  <TableCell sx={style().tableBodyCell}>9.5</TableCell>
-                  <TableCell sx={style().tableBodyCell}>27/02/2024</TableCell>
-                  <TableCell sx={style().actionCell}>
-                    <Button variant="contained" color="primary" sx={style().button}>Revisar</Button>
-                    <Button variant="contained" color="primary" sx={style().button}>Detalhes</Button>
-                  </TableCell>
-                </TableRow>
+                {grades.map((grade) => (
+                  <TableRow key={grade.id_nota} sx={style().tableRow}>
+                    <TableCell sx={style().tableBodyCell}>{grade.questionario_titulo}</TableCell>
+                    <TableCell sx={style().tableBodyCell}>{grade.nota_obtida.toFixed(2)}</TableCell>
+                    <TableCell sx={style().tableBodyFinalCell}>{grade.data_realizacao.split('T')[0].split('-').reverse().join('/')}</TableCell>
+                    <TableCell sx={style().tableBodyButton}>
+                      <Button variant="contained" color="primary" sx={style().button}
+                        onClick={() => window.location.href = `/exam/${grade.id_questionario}/result`}
+                      >Revisar</Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
