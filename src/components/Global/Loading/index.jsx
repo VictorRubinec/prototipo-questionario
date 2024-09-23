@@ -6,25 +6,25 @@ import EstructureLoading from "./EstructureLoading/index.jsx";
 
 function Loading() {
 
-    const logins = ['/', '/school', '/admin'];
+    const logins = ['/login', '/school', '/admin'];
 
-    // if (logins.includes(window.location.pathname)) {
+    if (logins.includes(window.location.pathname)) {
         return (
             <Box sx={style().loading}>
                 <CircularProgress sx={style().loadingIcon} />
             </Box>
         );
-    // } else {
-    //     return (
-    //         <>
-    //             <EstructureLoading>
-    //                 <Box sx={style().loading}>
-    //                     <CircularProgress sx={style().loadingIcon} />
-    //                 </Box>
-    //             </EstructureLoading>
-    //         </>
-    //     );
-    // }
+    } else {
+        return (
+            <>
+                <EstructureLoading>
+                    <Box sx={style().loading}>
+                        <CircularProgress sx={style().loadingIcon} />
+                    </Box>
+                </EstructureLoading>
+            </>
+        );
+    }
 }
 
 export default Loading;

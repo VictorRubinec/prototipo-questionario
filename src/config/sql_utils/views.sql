@@ -133,3 +133,4 @@ FROM
     Resultados_Aluno ra
     JOIN Questionarios q ON ra.id_questionario = q.id
     JOIN Turma_Questionario tq ON ra.id_questionario = tq.id_questionario AND ra.id_turma = tq.id_turma;
+    

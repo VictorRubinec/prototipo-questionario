@@ -6,11 +6,8 @@ import Icon from '../../Icon/index.jsx';
 
 function SideBarLoading(props) {
   const [open, setOpen] = React.useState(false);
-  
+
   const { side, setSide } = props.sideState;
-  
-  const user = JSON.parse(sessionStorage.getItem('user'));
-  const userPermissions = sessionStorage.getItem('permissions');
 
   const iconProps = {
     color: '#fff',
@@ -24,10 +21,15 @@ function SideBarLoading(props) {
   };
 
   const handleLogout = async () => {
+    
   }
 
   const handleMenu = (path) => {
+    
   }
+
+  const userPermissions = sessionStorage.getItem('permissions');
+  const userName = JSON.parse(sessionStorage.getItem('user')).nome;
 
   return (
     <>
@@ -40,7 +42,7 @@ function SideBarLoading(props) {
           </Box>
           <Box sx={open ? style().userInformation : style().userInformationClosed}>
             <Avatar sx={style().avatar} />
-            <Typography sx={style().nome}>{user.nome}</Typography>
+            <Typography sx={style().nome}>{userName}</Typography>
           </Box>
           {open ? (
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>
@@ -56,14 +58,14 @@ function SideBarLoading(props) {
                   <Button sx={style().button} onClick={() => handleMenu('/admin/dashboard')}><Icon name="DashboardIcon" props={iconProps} /> Dashboard</Button>
                   <Button sx={style().button} onClick={() => handleMenu('/admin/users')}><Icon name="GroupIcon" props={iconProps} /> Gestão de Usuários</Button>
                   <Button sx={style().button} onClick={() => handleMenu('/admin/schools')}><Icon name="SchoolIcon" props={iconProps} /> Gestão de Escolas</Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/admin/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
                 </>
               )}
               {userPermissions === 'school' && (
                 <>
                   <Button sx={style().button} onClick={() => handleMenu('/school/dashboard')}><Icon name="DashboardIcon" props={iconProps} /> Dashboard</Button>
                   <Button sx={style().button} onClick={() => handleMenu('/school/students')}><Icon name="QueueIcon" props={iconProps} /> Gestão de Alunos</Button>
-                  <Button sx={style().button} onClick={() => handleMenu('/school/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
+                  <Button sx={style().button} onClick={() => handleMenu('/profile')}><Icon name="ManageAccountsIcon" props={iconProps} /> Perfil</Button>
 
                 </>
               )}

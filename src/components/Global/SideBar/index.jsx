@@ -13,8 +13,6 @@ function SideBar(props) {
 
   const { side, setSide } = props.sideState;
 
-  const loadingState = props.loadingState;
-
   const iconProps = {
     color: '#fff',
     fontSize: '28px',
@@ -26,19 +24,15 @@ function SideBar(props) {
     setSide(!side);
   };
 
-  // if (loadingState) {
-  //   const navigate = useNavigate();
-  // }
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
-
     if (error) {
       console.log(error);
       return;
     }
-
     sessionStorage.clear();
-
     navigate('/');
   }
 

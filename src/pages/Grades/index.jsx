@@ -52,7 +52,7 @@ function Grades() {
               </TableHead>
               <TableBody>
                 {grades.map((grade) => (
-                  <TableRow key={grade.id_nota} sx={style().tableRow}>
+                  <TableRow key={grade.id_questionario} sx={style().tableRow}>
                     <TableCell sx={style().tableBodyCell}>{grade.questionario_titulo}</TableCell>
                     <TableCell sx={style().tableBodyCell}>{grade.nota_obtida.toFixed(2)}</TableCell>
                     <TableCell sx={style().tableBodyFinalCell}>{grade.data_realizacao.split('T')[0].split('-').reverse().join('/')}</TableCell>
