@@ -142,7 +142,7 @@ function Questions() {
         .from('respostas_aluno')
         .insert([
           {
-            id_aluno: JSON.parse(localStorage.getItem('user')).id,
+            id_aluno: JSON.parse(sessionStorage.getItem('user')).id,
             id_pergunta: verifyAnswers[i].id_pergunta,
             resposta: verifyAnswers[i].resposta,
             acerto: correct,
@@ -160,7 +160,7 @@ function Questions() {
       .from('v_informacoes_resultados')
       .select('*')
       .eq('id_questionario', id)
-      .eq('id_aluno', JSON.parse(localStorage.getItem('user')).id);
+      .eq('id_aluno', JSON.parse(sessionStorage.getItem('user')).id);
 
     if (resultError) {
       console.log(resultError);

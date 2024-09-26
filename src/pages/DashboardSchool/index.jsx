@@ -10,6 +10,9 @@ import Pie from '../../components/Dashboards/Pie/index.jsx';
 import Scatter from '../../components/Dashboards/Scatter/index.jsx';
 
 function DashboardSchool() {
+
+  const userPermissionsInfo = sessionStorage.getItem('permissions');
+
   return (
     <Estructure userPermissions={"school"}>
       <Box sx={style().box}>
