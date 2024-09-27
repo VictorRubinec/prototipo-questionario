@@ -4,7 +4,7 @@ import { style } from './style.js';
 
 import SideBar from '../SideBar/index.jsx';
 
-import useVerifyUserPermissions from '../../../utils/useVerifyUserPermissions/index.jsx';
+import useVerifyUserPermissions from '../../../utils/functions/useVerifyUserPermissions/index.jsx';
 
 function Estructure({ children, userPermissionsInfo }) {
 

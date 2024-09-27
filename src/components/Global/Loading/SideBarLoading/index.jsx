@@ -21,15 +21,15 @@ function SideBarLoading(props) {
   };
 
   const handleLogout = async () => {
-    
+
   }
 
   const handleMenu = (path) => {
-    
+
   }
 
-  const userPermissions = sessionStorage.getItem('permissions');
-  const userName = JSON.parse(sessionStorage.getItem('user')).nome;
+  // const userPermissions = sessionStorage.getItem('permissions');
+  // const userName = JSON.parse(sessionStorage.getItem('user')).nome;
 
   return (
     <>
@@ -42,7 +42,7 @@ function SideBarLoading(props) {
           </Box>
           <Box sx={open ? style().userInformation : style().userInformationClosed}>
             <Avatar sx={style().avatar} />
-            <Typography sx={style().nome}>{userName}</Typography>
+            <Typography sx={style().nome}>{/*{userName}*/}</Typography>
           </Box>
           {open ? (
             <ButtonGroup orientation="vertical" variant="text" sx={style().menuButton}>

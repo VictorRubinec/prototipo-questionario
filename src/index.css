@@ -1,3 +1,10 @@
+:root {
+    --purple: #9c7fb9;
+    --yellow: #f8c300;
+    --pink: #e72168;
+    --blue: #0482b1;
+}
+
 * {
     margin: 0;
     padding: 0;
