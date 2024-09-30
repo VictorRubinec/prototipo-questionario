@@ -7,6 +7,7 @@ const Style = () => {
             height: '100vh',
             width: '100%',
             overflow: 'hidden',
+            padding: '15px',
         },
         question: {
             display: 'flex',
@@ -16,7 +17,7 @@ const Style = () => {
             overflowY: 'auto',
         },
         examTitle: {
-            fontSize: '20px',
+            fontSize: '30px',
             fontWeight: 'bold',
             marginBottom: '10px',
         },
@@ -31,7 +32,7 @@ const Style = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             padding: '10px',
-            backgroundColor: '#f0f0f0',
+            backgroundColor: 'var(--pink)',
             boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.1)',
         },
         examInfoContent: {
@@ -41,25 +42,25 @@ const Style = () => {
         },
         listQuestions: {
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(30px, 1fr))', // Ajustar para o mínimo tamanho possível
-            gridGap: '5px', // Diminuir o espaço entre os botões
+            gridTemplateColumns: 'repeat(auto-fill, minmax(30px, 1fr))',
+            gridGap: '5px',
             width: '100%',
             padding: '10px',
             marginBottom: '20px',
-            backgroundColor: '#e0e0e0',
+            backgroundColor: 'var(--darkpink)',
             borderRadius: '5px',
         },
         questionButton: {
-            padding: '5px', // Tamanho interno menor
-            fontSize: '18px', // Fonte reduzida
-            backgroundColor: '#e0e0e0',
-            textAlign: 'center', // Centralizar o número do botão
+            padding: '5px',
+            fontSize: '18px',
+            textAlign: 'center',
+            backgroundColor: 'var(--pink2)',
             '&:disabled': {
                 backgroundColor: '#d0d0d0',
             },
             borderRadius: '5px',
-            width: '30px', // Largura mínima
-            height: '50px', // Altura mínima
+            width: '30px',
+            height: '50px',
         },
         buttons: {
             display: 'flex',
@@ -71,12 +72,17 @@ const Style = () => {
             marginTop: 'auto',
         },
         button: {
-            width: '100px',
+            width: '120px',
             margin: '0 10px',
             borderRadius: '5px',
-            backgroundColor: '#f0f0f0',
+            backgroundColor: 'var(--blue2)',
+            color: 'white',
             '&:hover': {
-                backgroundColor: '#e0e0e0',
+                backgroundColor: 'var(--blue)',
+            },
+            '&:disabled': {
+                backgroundColor: 'var(--lightblue)',
+                color: 'white',
             },
         },
         buttonFooter: {
@@ -89,13 +95,15 @@ const Style = () => {
             marginTop: 'auto',
         },
         finalizeButton: {
-            width: '100px',
+            width: '160px',
             marginTop: '10px',
+            fontSize: '18px',
+            fontWeight: 'bold',
             borderRadius: '5px',
-            backgroundColor: 'blue', // Cor verde para o botão de finalizar
+            backgroundColor: 'var(--purple)',
             color: 'white',
             '&:hover': {
-                backgroundColor: 'darkblue', // Cor mais escura ao passar o mouse
+                backgroundColor: 'var(--purple2)',
             },
         },
         modalContainer: {
@@ -126,10 +134,10 @@ const Style = () => {
             width: '100px',
             margin: '0 10px',
             borderRadius: '5px',
-            backgroundColor: 'blue', // Cor verde para o botão de finalizar
+            backgroundColor: 'var(--blue2)',
             color: 'white',
             '&:hover': {
-                backgroundColor: 'darkblue', // Cor mais escura ao passar o mouse
+                backgroundColor: 'var(--blue)',
             },
         },
 

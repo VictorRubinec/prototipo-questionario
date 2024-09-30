@@ -1,9 +1,3 @@
-// xs: -> Tela Maior que 0px
-// sm: -> Tela Maior que 600px
-// md: -> Tela Maior que 900px
-// lg: -> Tela Maior que 1200px
-// xl: -> Tela Maior que 1536px
-
 const Style = () => {
     return (
         {
@@ -11,58 +5,79 @@ const Style = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '10px',
-                width: '30%',
+                width: '100%',
+                height: '180px',
                 backgroundColor: 'white',
-                borderRadius: '10px',
+                borderRadius: '8px',
                 boxShadow: '0px 0px 10px 0px rgb(0, 0, 0, 0.1)',
                 margin: '10px 0px 0px 0px',
             },
             
-            titulo: {
-                fontSize: '20px',
-                fontWeight: 'bold',
-            },
-
-            turma : {
-                fontSize: '16px',
-                fontWeight: 'bold',
-            },
-
-            tipo: {
-                fontSize: '14px',
-                fontWeight: 'bold',
-            },
-
-            descricao: {
-                fontSize: '14px',
-            },
-
-            data: {
-                fontSize: '14px',
-            },
-
-            boxButton: {
+            boxBody: {
                 display: 'flex',
-                justifyContent: 'right',
+                flexDirection: 'row',
+                padding: '10px',
+                width: '100%',
+                height: '100%',
+            },
+
+            titulo: {
+                fontSize: '25px',
+                fontWeight: 'bold',
+            },
+
+            divider: {
+                width: '100%',
+                height: '2px',
+                borderRadius: '2px',
+                margin: '10px 0px',
+            },
+
+            text: {
+                fontSize: '16px',
+            },
+
+            boxData: {
+                display: 'flex',
+                flexDirection: 'row',
                 alignItems: 'center',
                 width: '100%',
                 height: '100%',
             },
 
+            data: {
+                fontSize: '18px',
+                fontWeight: 'bold',
+            },
+
+            boxInfo: {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: '100%',
+            },
+
+            boxButton: {
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+                height: '100%',
+            },
+            
             botao: {
-                width: '30%',
-                fontSize: '12px',
-                backgroundColor: 'rgb(0, 0, 0)',
+                width: '150px',
+                fontSize: '15px',
+                backgroundColor: 'var(--blue2)',
                 color: 'white',
                 '&:hover': {
-                    backgroundColor: 'rgb(0, 0, 0, 0.7)',
+                    backgroundColor: 'var(--blue)',
                 },
                 padding: '10px',
                 borderRadius: '8px',
-                border: 'none',
                 cursor: 'pointer',
-                margin: '10px 0px 0px 0px',
-            },
+                marginTop: 'auto',
+                fontWeight: 'bold',
+            },            
         }
     )
 }

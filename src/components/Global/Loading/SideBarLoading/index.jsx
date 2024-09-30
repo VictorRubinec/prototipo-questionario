@@ -28,7 +28,7 @@ function SideBarLoading(props) {
 
   }
 
-  // const userPermissions = sessionStorage.getItem('permissions');
+  const userPermissions = sessionStorage.getItem('permissions');
   // const userName = JSON.parse(sessionStorage.getItem('user')).nome;
 
   return (

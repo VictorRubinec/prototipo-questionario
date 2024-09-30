@@ -15,30 +15,18 @@ const Style = () => {
                 backgroundColor: 'rgb(245, 245, 245)',
             },
 
-            bodyOpen: {
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '10px',
-                width: '100%',
-                height: '100%',
-                margin: '0 0 0 250px',
-                transition: 'margin 0.5s ease',
-            },
-
-            bodyClosed: {
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '10px',
-                width: '100%',
-                height: '100%',
-                margin: '0 0 0 60px',
-                transition: 'margin 0.5s ease',
-            },
-
-            menuTitulo: {
+            header: {
                 fontSize: '30px',
                 fontWeight: 'bold',
                 margin: '10px 0px',
+            },
+
+            body: {
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '5px 10px',
+                width: '100%',
+                height: '100%',
             },
         }
     )

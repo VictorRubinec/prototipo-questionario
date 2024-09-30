@@ -2,12 +2,10 @@ const Style = () => {
     return {
         headerBox: {
             display: 'flex',
-            justifyContent: 'center',
-            padding: '20px 0',
         },
 
         titulo: {
-            fontSize: '24px',
+            fontSize: '30px',
             fontWeight: 'bold',
             '@media (min-width: 600px)': { // sm
                 fontSize: '28px',
@@ -24,10 +22,10 @@ const Style = () => {
             margin: '10px 0px',
         },
 
-        infoBody: {
+        body: {
             display: 'flex',
             flexDirection: 'column',
-            padding: '0 10px',
+            padding: '5px 10px',
             width: '100%',
         },
 
@@ -104,10 +102,10 @@ const Style = () => {
         },
 
         botao: {
-            backgroundColor: 'rgb(0, 82, 204)',
+            backgroundColor: 'var(--blue2)',
             color: 'white',
             '&:hover': {
-                backgroundColor: 'rgb(0, 82, 204, 0.8)',
+                backgroundColor: 'var(--blue)',
             },
             padding: '5px 36px',
             fontSize: '16px',
@@ -148,10 +146,10 @@ const Style = () => {
             width: '100%',
         },
         modalButton: {
-            bgcolor: 'primary.main',
+            backgroundColor: 'var(--blue2)',
             color: 'white',
             '&:hover': {
-                bgcolor: 'primary.dark',
+                backgroundColor: 'var(--blue)',
             },
             padding: '10px 20px',
             borderRadius: '5px',

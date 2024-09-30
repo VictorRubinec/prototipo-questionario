@@ -7,6 +7,23 @@ select
 from
     Alunos;
 
+create view V_Login_Professor as
+select
+    id as id_professor,
+    email as email_professor,
+    nome as nome_professor,
+    senha as senha_professor
+from
+    Professores;
+
+create view V_Login_Administrador as
+select
+    id as id_administrador,
+    nome as nome_administrador,
+    senha as senha_administrador
+from
+    Administradores;
+
 create view V_Questionarios_Alunos as
 select
     q.id as id_questionario,

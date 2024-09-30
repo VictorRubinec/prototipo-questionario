@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Divider, Avatar, TextField, Button, Grid } from '@mui/material';
-import { style } from './style.js';
+import { style } from '../style.js';
 import supabase from '../../../../config/client.js';
 
 function ProfileStudent() {
@@ -104,7 +104,6 @@ function ProfileStudent() {
           </Button>
         </Box>
 
-        {/* Primeira linha: Idade, Sexo, Data de Nascimento, Etnia */}
         <Grid container spacing={2} sx={{ marginBottom: 2 }}>
           <Grid item xs={3}>
             <TextField
@@ -116,6 +115,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -128,6 +128,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -140,6 +141,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -152,6 +154,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
         </Grid>
@@ -168,6 +171,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -180,6 +184,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -192,11 +197,11 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
         </Grid>
 
-        {/* Terceira e quarta linha: Endereço, Cidade, Estado, CEP */}
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -208,6 +213,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={6}>
@@ -220,6 +226,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -232,6 +239,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -244,6 +252,7 @@ function ProfileStudent() {
               variant="outlined"
               size="small"
               fullWidth
+              sx={style().input(isEditable)}
             />
           </Grid>
         </Grid>

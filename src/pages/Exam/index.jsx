@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { style } from './style.js';
 
 import Estructure from '../../components/Global/Estructure/index.jsx';
-import Start from '../../components/Student/Start/index.jsx';
-import Questions from '../../components/Student/Questions/index.jsx';
-import Result from '../../components/Student/Result/index.jsx';
+import Start from '../../components/Student/Exam/Start/index.jsx';
+import Questions from '../../components/Student/Exam/Questions/index.jsx';
+import Result from '../../components/Student/Exam/Result/index.jsx';
 
 function Exam() {
   const { id, question } = useParams();

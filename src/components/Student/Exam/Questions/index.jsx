@@ -1,9 +1,12 @@
 import React from 'react';
-import { style } from './style.js';
-import { Box, Button, Typography, IconButton, Modal } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import supabase from '../../../config/client.js';
+import { style } from './style.js';
+
+import { Box, Button, Typography, IconButton, Modal } from '@mui/material';
+
 import Question from '../Question/index.jsx';
+
+import supabase from '../../../../config/client.js';
 
 function Questions() {
   const navigate = useNavigate();
@@ -223,8 +226,7 @@ function Questions() {
                   }}
                   disabled={index === currentQuestionIndex}
                   sx={{
-                    ...style().questionButton,
-                    backgroundColor: isAnswered(question.id_pergunta) ? '#c8e6c9' : 'transparent'
+                    ...style().questionButton
                   }}
                 >
                   {index + 1}

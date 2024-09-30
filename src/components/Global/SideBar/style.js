@@ -5,7 +5,7 @@ const Style = () => {
         sideBarOpen: {
             width: '250px',
             height: '100%',
-            background: 'linear-gradient(180deg, #1a1a1a, #333)',
+            background: 'linear-gradient(180deg, var(--pink), var(--pink2))',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -17,7 +17,7 @@ const Style = () => {
         sideBarClosed: {
             width: '60px',
             height: '100%',
-            background: 'linear-gradient(180deg, #333, #1a1a1a)',
+            background: 'linear-gradient(180deg, var(--pink), var(--pink2))',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -74,7 +74,7 @@ const Style = () => {
             textAlign: 'center',
             textTransform: 'none',
             '&:hover': {
-                backgroundColor: 'none'
+                backgroundColor: 'var(--pink2)',
             }
         },
 
@@ -103,7 +103,7 @@ const Style = () => {
             textAlign: 'center',
             textTransform: 'none',
             '&:hover': {
-                backgroundColor: '#555'
+                backgroundColor: 'var(--pink2)',
             }
         },
 
@@ -119,7 +119,7 @@ const Style = () => {
             paddingRight: '10px',
             justifyContent: 'flex-end',
             '&:hover': {
-                backgroundColor: '#555'
+                backgroundColor: '--var(pink)',
             },
             alignSelf: 'flex-end',
         }

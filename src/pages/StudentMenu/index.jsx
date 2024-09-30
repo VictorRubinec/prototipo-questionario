@@ -11,6 +11,13 @@ import supabase from '../../config/client.js';
 function StudentMenu() {
   const [questionarios, setQuestionarios] = React.useState([]);
 
+  try {
+    if (!sessionStorage.getItem('user')) {
+      window.location.href = '/login';
+    }
+  } catch (error) {
+    console.log(error);
+  }
   React.useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase
@@ -33,9 +40,9 @@ function StudentMenu() {
 
   return (
     <Estructure userPermissionsInfo={userPermissionsInfo}>
-      <Typography sx={style().menuTitulo}>Minhas Provas:</Typography>
+      <Typography sx={style().header}>Minhas Provas:</Typography>
       <Divider orientation="horizontal" />
-      <Box>
+      <Box sx={style().body}>
         {questionarios.map((questionario) => (
           <BoxProva key={questionario.id_questionario} examInfo={questionario} />
         ))}

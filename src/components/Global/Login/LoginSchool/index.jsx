@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import { style } from './style.js';
+import { style } from '../style.js';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -21,10 +21,10 @@ function LoginSchool() {
     const password = document.getElementById('password').value;
 
     const { data, error } = await supabase
-      .from('professores')
-      .select('id, nome, email')
-      .eq('email', username)
-      .eq('senha', password);
+      .from('v_login_professor')
+      .select('id_professor, nome_professor')
+      .eq('email_professor', username)
+      .eq('senha_professor', password);
 
     if (error) {
       console.log(error);
@@ -34,24 +34,27 @@ function LoginSchool() {
       return;
     }
 
-    sessionStorage.setItem('user', JSON.stringify(data[0]));
+    sessionStorage.clear();
+
+    sessionStorage.setItem('user', JSON.stringify(
+      {
+        id: data[0].id_professor,
+        nome: data[0].nome_professor,
+      }
+    ));
     sessionStorage.setItem('permissions', 'school');
 
-    navigate('/school/dashboard');
+    navigate('/achool/dashboard');
   }
 
   return (
     <>
-      <Box sx={style().page}>
-        <Box sx={style().loginBox}>
-          <Typography sx={style().titulo}>School Login</Typography>
-          <TextField sx={style().input} placeholder='usuário' />
-          <TextField sx={style().input} type="password" placeholder='senha' />
-          <Button sx={style().button} onClick={handleLogin}>
-            Entrar
-          </Button>
-        </Box>
-      </Box>
+      <Typography sx={style().titulo}>Login Escolar</Typography>
+      <TextField sx={style().input} label='usuário' id="username" color='black' />
+      <TextField sx={style().input} type="password" label='senha' id="password" color='black' />
+      <Button sx={style().button} onClick={handleLogin}>
+        Entrar
+      </Button>
     </>
   );
 }

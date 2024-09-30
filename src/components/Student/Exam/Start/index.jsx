@@ -5,7 +5,7 @@ import { Box, Button, Typography, Divider, Modal } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-import supabase from '../../../config/client.js';
+import supabase from '../../../../config/client.js';
 
 function Start() {
 
@@ -101,13 +101,13 @@ function Start() {
   return (
     <>
       <Box sx={style().headerBox}>
-        <Typography variant="h4" sx={style().titulo}>
+        <Typography sx={style().titulo}>
           {exam.titulo_questionario}
         </Typography>
       </Box>
       <Divider sx={style().divider} />
 
-      <Box sx={style().infoBody}>
+      <Box sx={style().body}>
         <Box sx={style().infoBox}>
           <Typography sx={style().info}><b>Turma: </b>{exam.nome_turma}</Typography>
           <Typography sx={style().infoDesc}><b></b>{exam.descricao_questionario}</Typography>

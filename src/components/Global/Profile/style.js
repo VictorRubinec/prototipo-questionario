@@ -32,10 +32,10 @@ const Style = () => {
                 margin: '10px 0',
             },
             body: {
-                padding: '8px',
+                padding: '5px 10px',
             },
             menuTitulo: {
-                fontSize: '18px',
+                fontSize: '20px',
                 fontWeight: 'bold',
             },
             infoHeader: {
@@ -44,12 +44,21 @@ const Style = () => {
                 alignItems: 'center',
                 marginBottom: '16px',
             },
-            input: {
-                marginBottom: '16px',
-                width: '100%',
-            },
+            input: (isEditable) => ({
+                fontSize: '16px',
+                borderRadius: '4px',
+                backgroundColor:
+                    isEditable === true ? 'white' : 'rgba(0, 0, 0, 0.1)',
+            }),
             editButton: {
                 marginLeft: '16px',
+                backgroundColor: 'var(--blue2)',
+                color: 'white',
+                '&:hover': {
+                    backgroundColor: 'var(--blue)',
+                },
+                width: '150px',
+                fontWeight: 'bold',
             },
         }
     )

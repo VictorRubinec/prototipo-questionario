@@ -1,14 +1,13 @@
 const Style = () => {
     return (
         {
-            box: {
+            page: {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                height: '100vh',
+                height: '100%',
                 width: '100%',
                 backgroundColor: '#f5f5f5',
-                padding: '10px',
             },
 
             title: {
@@ -18,6 +17,15 @@ const Style = () => {
                 width: '100%',
                 justifyContent: 'left',
                 marginBottom: '20px',
+            },
+
+            body: {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
+                height: '100%',
+                padding: '5px 10px',
             },
 
             divider: {
@@ -38,17 +46,17 @@ const Style = () => {
             },
 
             tableHeadCell: {
-                fontSize: '16px',
+                fontSize: '20px',
                 fontWeight: 'bold',
                 color: '#333',
                 backgroundColor: '#e0e0e0',
                 border: '1px solid #ddd',
-                padding: '12px',
+                padding: '15px',
                 textAlign: 'left',
             },
 
             tableHeadFinalCell: {
-                fontSize: '16px',
+                fontSize: '20px',
                 fontWeight: 'bold',
                 color: '#333',
                 backgroundColor: '#e0e0e0',
@@ -59,7 +67,7 @@ const Style = () => {
             },
 
             tableHeadActionCell: {
-                fontSize: '16px',
+                fontSize: '18px',
                 fontWeight: 'bold',
                 color: '#333',
                 backgroundColor: '#e0e0e0',
@@ -69,7 +77,7 @@ const Style = () => {
             },
 
             tableBodyCell: {
-                fontSize: '16px',
+                fontSize: '18px',
                 color: '#333',
                 border: '1px solid #ddd',
                 padding: '12px',
@@ -77,7 +85,7 @@ const Style = () => {
             },
 
             tableBodyFinalCell: {
-                fontSize: '16px',
+                fontSize: '18px',
                 color: '#333',
                 border: '1px solid #ddd',
                 borderRight: 'none',
@@ -114,6 +122,11 @@ const Style = () => {
                 fontSize: '14px',
                 fontWeight: 'bold',
                 textTransform: 'none',
+                backgroundColor: 'var(--blue2)',
+                color: 'white',
+                '&:hover': {
+                    backgroundColor: 'var(--blue)',
+                },
             },
         }
     )

@@ -19,13 +19,19 @@ function BoxProva({ examInfo }) {
       <Box sx={style().boxProva}>
         <Typography sx={style().titulo}>{examInfo.titulo_questionario}</Typography>
         <Divider sx={style().divider} />
-        <Typography sx={style().turma}>{examInfo.nome_turma}</Typography>
-        <Typography sx={style().tipo}>{examInfo.tipo_questionario}</Typography>
-        <Typography sx={style().descricao}>{examInfo.descricao_questionario}</Typography>
-        <Typography sx={style().data}>Início: {examInfo.data_inicio_questionario}</Typography>
-        <Typography sx={style().data}>Fim: {examInfo.data_fim_questionario}</Typography>
-        <Box sx={style().boxButton}>
-          <Button sx={style().botao} onClick={() => handleExam(examInfo.id_questionario)}>Iniciar</Button>
+        <Box sx={style().boxBody}>
+          <Box sx={style().boxInfo}>
+            <Typography sx={style().text}>Turma: {examInfo.nome_turma}</Typography>
+            <Typography sx={style().text}>Tipo: {examInfo.tipo_questionario}</Typography>
+            <Box sx={style().boxData}>
+              <Typography sx={style().data}>Início: {examInfo.data_inicio_questionario}</Typography>
+              <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
+              <Typography sx={style().data}>Fim: {examInfo.data_fim_questionario}</Typography>
+            </Box>
+          </Box>
+          <Box sx={style().boxButton}>
+            <Button sx={style().botao} onClick={() => handleExam(examInfo.id_questionario)}>Iniciar</Button>
+          </Box>
         </Box>
       </Box>
     </>

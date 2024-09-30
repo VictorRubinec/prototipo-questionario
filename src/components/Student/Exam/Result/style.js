@@ -8,23 +8,35 @@ const Style = () => {
     return (
         {
             page: {
-                padding: '10px',
-                backgroundColor: '#f4f4f4',
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: '100%',
             },
             table: {
                 minWidth: 650,
                 borderCollapse: 'collapse',
             },
-            examHeader: {
+            body: {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
+                height: '100%',
+                padding: '5px 10px',
+            },
+
+            divider: {
+                width: '100%',
                 marginBottom: '20px',
             },
             examTitle: {
-                fontSize: '24px',
+                fontSize: '30px',
                 fontWeight: 'bold',
                 color: '#333',
             },
             tableHeadCell: {
-                fontSize: '16px',
+                fontSize: '20px',
                 fontWeight: 'bold',
                 color: '#333',
                 backgroundColor: '#e0e0e0',
@@ -32,8 +44,13 @@ const Style = () => {
                 padding: '12px',
                 textAlign: 'left',
             },
+            tableBodyCell: {
+                fontSize: '18px',
+                color: '#333',
+                padding: '10px',
+                textAlign: 'left',
+            },
             tableContainer: {
-                marginTop: '20px',
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
                 borderRadius: '4px',
             },
@@ -43,7 +60,7 @@ const Style = () => {
                 borderRadius: '4px',
             },
             examResultText: {
-                fontSize: '18px',
+                fontSize: '20px',
                 marginBottom: '10px',
             },
             questionRow: (acerto_percentual) => ({

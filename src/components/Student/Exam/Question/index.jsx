@@ -1,7 +1,9 @@
 import React from 'react';
 import { style } from './style.js';
+
 import { Box, Checkbox, RadioGroup, Radio, TextField, Typography, Divider } from '@mui/material';
-import supabase from '../../../config/client.js';
+
+import supabase from '../../../../config/client.js';
 
 function Question({ questionProps, answersState }) {
   const [alternatives, setAlternatives] = React.useState([]);

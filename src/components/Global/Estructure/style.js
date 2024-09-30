@@ -19,7 +19,7 @@ const Style = () => {
             bodyOpen: {
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '10px',
+                padding: '15px',
                 width: '100%',
                 height: '100%',
                 margin: '0 0 0 250px',
@@ -29,7 +29,7 @@ const Style = () => {
             bodyClosed: {
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '10px',
+                padding: '15px',
                 width: '100%',
                 height: '100%',
                 margin: '0 0 0 60px',

@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 import Icon from '../Icon/index.jsx';
 
-import supabase from '../../../config/client.js';
-
 function SideBar(props) {
 
   const [open, setOpen] = React.useState(false);
@@ -27,13 +25,8 @@ function SideBar(props) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.log(error);
-      return;
-    }
     sessionStorage.clear();
-    navigate('/');
+    navigate('/login');
   }
 
   const handleMenu = (path) => {

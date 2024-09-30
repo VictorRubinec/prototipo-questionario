@@ -4,6 +4,8 @@
 // lg: -> Tela Maior que 1200px
 // xl: -> Tela Maior que 1536px
 
+import Logo from '../../assets/images/logo.png';
+
 const Style = () => {
     return (
         {
@@ -13,56 +15,58 @@ const Style = () => {
                 alignItems: 'center',
                 width: '100%',
                 height: '100vh',
-                backgroundColor: 'rgb(245, 245, 245)',
-            },
+                background: 'radial-gradient(circle, var(--pink) 20%, var(--bgpink ) 100%)',
+            },            
 
             loginBox: {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: '30%',
-                height: '50%',
-                backgroundColor: 'white',
+                width: '450px',
+                height: '500px',
                 borderRadius: '10px',
-                boxShadow: '0px 0px 10px 0px rgb(0, 0, 0, 0.1)',
+
+                '@media (max-width: 900px)': { // md: Tela menor que 900px
+                    width: '350px',
+                    height: '450px',
+                },
+                '@media (max-width: 600px)': { // sm: Tela menor que 600px
+                    width: '300px',
+                    height: '400px',
+                }
             },
 
-            titulo: {
-                fontSize: '30px',
-                fontWeight: 'bold',
+            loginHeader: {
+                width: '100%',
+                height: '35%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             },
 
-            button: {
-                width: '40%',
-                backgroundColor: 'rgb(0, 0, 0)',
-                color: 'white',
-                '&:hover': {
-                    backgroundColor: 'rgb(0, 0, 0, 0.7)',
-                },
-                margin: '15px 0px',
-                padding: '10px',
-                borderRadius: '8px',
-                border: 'none',
-                cursor: 'pointer',
+            loginBody: {
+                width: '100%',
+                height: '80%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
             },
 
-            input: {
-                width: '80%',
-                margin: '5px 0px',
-                padding: '0px',
-                backgroundColor: 'rgb(245, 245, 245)',
-                '&:hover': {
-                    backgroundColor: 'rgb(245, 245, 245)',
-                },
-                '&:focus': {
-                    backgroundColor: 'rgb(245, 245, 245)',
-                },
+            divider: {
+                width: '90%',
+                height: '3px',
                 borderRadius: '5px',
-                border: 'none',
-                boxShadow: '0px 0px 5px 0px rgb(0, 0, 0, 0.1)',
+                backgroundColor: 'var(--lightyellow)',
+                margin: '10px 0px',
+            },
 
-           }
+            logo: {
+                backgroundImage: `url(${Logo})`,
+                backgroundSize: 'cover',
+                width: '215px',
+                height: '110px',
+            },
         }
     )
 }
